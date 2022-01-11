@@ -31,6 +31,19 @@ void printLL(Node* head) {
     cout << endl;
 }
 
+void insertInMiddle(Node* head, int data, int pos) {
+    if (pos == 0) insertAtHead(head, data);
+    else {
+        Node* n = new Node(data);
+        Node* current = head;
+        for (int i = 0; i < pos - 1; i++) {
+            current = current->next;
+        }
+        n->next = current->next;
+        current->next = n;
+    }
+}
+
 void insertAfter(int data, int data_2,  Node* head) {
     Node* current = head;
     while (current != NULL) {
@@ -53,7 +66,7 @@ int main(void) {
     insertAtHead(head, 3);
     insertAtHead(head, 2);
     insertAtHead(head, 1);
-    insertAfter(2, 10, head);
+    insertInMiddle(head, 10, 3);
     printLL(head);
 
     return 0;
